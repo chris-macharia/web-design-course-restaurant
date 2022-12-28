@@ -1,0 +1,55 @@
+/*
+  Author: Chris Macharia
+  Theme: Food order website
+  Version: 1.0
+*/
+ *{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+  /* border: 1px solid black; */
+  padding: 1%;
+  width:80%;
+  margin: 0 auto;
+}
+.text-center{
+  text-align: center;
+}
+body{
+  background-color: #9966ff;
+}
+
+/*CSS for menu*/
+.menu{
+  border-bottom: 1px solid black;
+}
+.menu ul{
+  list-style-type: none;
+  padding: 1%;
+}
+.menu ul li{
+  display: inline;
+}
+.menu ul li a{
+  text-decoration: none;
+  font-weight: bold;
+  color: #c0392b;
+}
+.menu ul li a:hover{
+  color: #d35400;
+}
+
+/*CSS for main-section*/
+
+.main-content{
+  background-color: #bdc3c7;
+}
+
+/*CSS for footer*/
+
+.footer{
+  background-color: #e74c3c;
+  color: white;
+}
