@@ -4,6 +4,8 @@
   Version: 1.0
 */
 
+/*CSS for all*/
+
  *{
   margin: 0;
   padding: 0;
@@ -25,8 +27,51 @@ body{
   float: none;
   clear: both ;
 }
+.tbl-full{
+  width: 100%;
+}
+table tr th{
+  border-bottom: 1px solid black;
+  padding: 1%;
+  text-align: left;
+}
+table tr td{
+  padding: 1%;
+}
+.btn-primary{
+  background-color: #0984e3;
+  padding: 1%;
+}
+.btn-primary:hover{
+  background-color: #6c5ce7;
+}
+.btn-secondary{
+  background-color: #00b894;
+  padding: 1%;
+} 
+.btn-secondary:hover{
+  background-color: #55efc4;
+}
+.btn-danger{
+  background-color: #d63031;
+  padding: 1%;
+}
+.btn-danger:hover{
+  background-color:#e17055;
+}
+button a{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+#update-admin-btn a{
+  color: black;
+}
+
+
 
 /*CSS for menu*/
+
 .menu{
   border-bottom: 1px solid black;
 }
