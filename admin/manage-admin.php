@@ -8,7 +8,7 @@
 
     <!-- Button to Add Admin -->
     <button class="btn-primary">
-      <a href="#">Add Admin</a>
+      <a href="./add-admin.php">Add Admin</a>
     </button>
     <br /> <br /> <br />
 
@@ -35,7 +35,7 @@
         </td>
       </tr>
     </table>
-    
+
   </div>
 </div>
 <!-- Main section ends -->
