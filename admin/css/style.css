@@ -70,8 +70,12 @@ button a{
 #update-admin-btn a{
   color: black;
 }
-
-
+.success{
+  color: #3a6346;
+}
+.error{
+  color: #e74c3c;
+}
 
 /*CSS for menu*/
 

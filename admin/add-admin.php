@@ -77,14 +77,14 @@ if (isset($_POST['submit'])) {
   if($res==TRUE)
   {
     //Create a session variable to display message
-    $_SESSION['add'] = "Admin Added Successfully";
+    $_SESSION['add'] = "<div class='success'>Admin Added Successfully</div>";
     //Redirect page
     header("location:".HOMEURL.'admin/manage-admin.php');
   }
   else
   {
     //Create a session variable to display message
-    $_SESSION['add'] = "Failed To Add Admin";
+    $_SESSION['add'] = "<div class='error'>Failed To Add Admin</div>";
     //Redirect page
     header("location:".HOMEURL.'admin/manage-admin.php');
   }
