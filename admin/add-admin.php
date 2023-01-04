@@ -4,6 +4,14 @@
   <div class="wrapper">
     <h1>Add admin</h1>
 
+    <?php
+      if(isset($_SESSION['add']))
+      {
+        echo $_SESSION['add'];
+        unset($_SESSION['add']);
+      }
+    
+    ?>
     <br><br>
 
     <form action="" method="POST">
@@ -47,22 +55,40 @@
 <?php
 //Process the value from Form and save it in DB
 
-// Check wherther the submit button is clicked
+//1.Check wherther the submit button is clicked
 if (isset($_POST['submit'])) {
-  // Button clicked
+  //Button clicked
   $full_name = $_POST['full_name'];
   $username = $_POST['username'];
   $password = md5($_POST['password']);  //Password encryption with MD5
 
 
-  //SQL querry to save the data into the database
+  //2.SQL querry to save the data into the database
   $sql = "INSERT INTO tbl_admin SET
         full_name='$full_name',
         username='$username',
         password='$password'
       ";
 
-  //Execute the querry and save the data into the DB
+  //3.Execute the querry and save the data into the DB
   $res = mysqli_query($conn, $sql) or die/* (mysqli_error()) */;
+
+  //4.Check whether the data is saved in the DB
+  if($res==TRUE)
+  {
+    //Create a session variable to display message
+    $_SESSION['add'] = "Admin Added Successfully";
+    //Redirect page
+    header("location:".HOMEURL.'admin/manage-admin.php');
+  }
+  else
+  {
+    //Create a session variable to display message
+    $_SESSION['add'] = "Failed To Add Admin";
+    //Redirect page
+    header("location:".HOMEURL.'admin/manage-admin.php');
+  }
+
+
 }
 ?>
