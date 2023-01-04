@@ -31,19 +31,58 @@
         <th>Actions</th>
       </tr>
 
-      <tr>
-        <td>1.</td>
-        <td>Chris Macharia</td>
-        <td>Chris Macharia</td>
-        <td>
-          <button class="btn-secondary" id="update-admin-btn">
-            <a href="#">Update admin</a>
-          </button>
-          <button class="btn-danger">
-            <a href="#">Delete admin</a>
-          </button>
-        </td>
-      </tr>
+      <?php
+      // Query to get all admin
+        $sql = "SELECT * FROM tbl_admin";
+
+      //Execute the query
+      $res = mysqli_query($conn, $sql);
+
+      //Check whether query is executed
+      if($res == TRUE)
+      {
+        //Count rows
+        $count= mysqli_num_rows($res); // Function to count all the rows in a DB
+
+        $sn = 1;  //will be used to display the serial numbers of the fetched data
+
+        if($count > 0)
+        {
+          while($rows=mysqli_fetch_assoc($res))
+          {
+            //Using while loop to get all the data from the database.
+            $id=$rows['id'];
+            $full_name=$rows['full_name'];
+            $username=$rows['username'];
+            
+            //Display the data in our table
+            ?>
+
+            <tr>
+              <td><?php echo $sn++;?></td>
+              <td><?php echo $full_name; ?></td>
+              <td><?php echo $username?></td>
+              <td>
+                <button class="btn-secondary" id="update-admin-btn">
+                  <a href="#">Update admin</a>
+                </button>
+                <button class="btn-danger">
+                  <a href="#">Delete admin</a>
+                </button>
+              </td>
+            </tr>
+
+            <?php
+          }
+        }
+        else
+        {
+
+        }
+
+      }
+      
+      ?>
     </table>
 
   </div>
