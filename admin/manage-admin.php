@@ -69,7 +69,7 @@
               <td><?php echo $username?></td>
               <td>
                 <button class="btn-secondary" id="update-admin-btn">
-                  <a href="#">Update admin</a>
+                  <a href="<?php echo HOMEURL;?>admin/update-admin.php?id=<?php echo $id;?>">Update admin</a>
                 </button>
                 <button class="btn-danger">
                   <a href="<?php echo HOMEURL;?>admin/delete-admin.php?id=<?php echo $id; ?>">Delete admin</a>
