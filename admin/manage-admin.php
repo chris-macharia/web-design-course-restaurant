@@ -13,9 +13,14 @@
       unset($_SESSION['add']); //Removing session message
     }
 
-    if (isset($_SESSION['delete'])){
+    if (isset($_SESSION['delete'])) {
       echo $_SESSION['delete'];
       unset($_SESSION['delete']);
+    }
+
+    if (isset($_SESSION['update'])) {
+      echo $_SESSION['update'];
+      unset($_SESSION['update']);
     }
 
     ?>
@@ -38,55 +43,48 @@
 
       <?php
       // Query to get all admin
-        $sql = "SELECT * FROM tbl_admin";
+      $sql = "SELECT * FROM tbl_admin";
 
       //Execute the query
       $res = mysqli_query($conn, $sql);
 
       //Check whether query is executed
-      if($res == TRUE)
-      {
+      if ($res == TRUE) {
         //Count rows
-        $count= mysqli_num_rows($res); // Function to count all the rows in a DB
+        $count = mysqli_num_rows($res); // Function to count all the rows in a DB
 
         $sn = 1;  //will be used to display the serial numbers of the fetched data
 
-        if($count > 0)
-        {
-          while($rows=mysqli_fetch_assoc($res))
-          {
+        if ($count > 0) {
+          while ($rows = mysqli_fetch_assoc($res)) {
             //Using while loop to get all the data from the database.
-            $id=$rows['id'];
-            $full_name=$rows['full_name'];
-            $username=$rows['username'];
-            
+            $id = $rows['id'];
+            $full_name = $rows['full_name'];
+            $username = $rows['username'];
+
             //Display the data in our table
-            ?>
+      ?>
 
             <tr>
-              <td><?php echo $sn++;?></td>
+              <td><?php echo $sn++; ?></td>
               <td><?php echo $full_name; ?></td>
-              <td><?php echo $username?></td>
+              <td><?php echo $username ?></td>
               <td>
                 <button class="btn-secondary" id="update-admin-btn">
-                  <a href="<?php echo HOMEURL;?>admin/update-admin.php?id=<?php echo $id;?>">Update admin</a>
+                  <a href="<?php echo HOMEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>">Update admin</a>
                 </button>
                 <button class="btn-danger">
-                  <a href="<?php echo HOMEURL;?>admin/delete-admin.php?id=<?php echo $id; ?>">Delete admin</a>
+                  <a href="<?php echo HOMEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>">Delete admin</a>
                 </button>
               </td>
             </tr>
 
-            <?php
+      <?php
           }
+        } else {
         }
-        else
-        {
-
-        }
-
       }
-      
+
       ?>
     </table>
 
