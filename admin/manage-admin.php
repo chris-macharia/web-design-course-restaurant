@@ -70,6 +70,10 @@
               <td><?php echo $full_name; ?></td>
               <td><?php echo $username ?></td>
               <td>
+              </button>
+                <button class="btn-primary">
+                  <a href="<?php echo HOMEURL;?>admin/update-password.php?id=<?php echo $id; ?>">Change password</a>
+                </button>
                 <button class="btn-secondary" id="update-admin-btn">
                   <a href="<?php echo HOMEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>">Update admin</a>
                 </button>
