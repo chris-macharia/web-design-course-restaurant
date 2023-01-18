@@ -12,7 +12,7 @@
               Current Password
             </td>
             <td>
-              <input type="password" name="old_password" placeholder="Old Password">
+              <input type="password" name="old_password" placeholder="current password">
             </td>
           </tr>
 
@@ -36,8 +36,8 @@
 
           <tr>
             <td colspan="2">
-              <input type="submit" name="submit" value="Change Password">
-
+              <input type="hidden" name="id" value="<?php echo $id;?>">
+              <input type="submit" name="submit" value="Change Password" class="btn-secondary">
             </td>
           </tr>
 
