@@ -12,7 +12,7 @@
               Current Password
             </td>
             <td>
-              <input type="password" name="old_password" placeholder="current password">
+              <input type="password" name="current_password" placeholder="current password">
             </td>
           </tr>
 
@@ -36,7 +36,7 @@
 
           <tr>
             <td colspan="2">
-              <input type="hidden" name="id" value="<?php echo $id;?>">
+              <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
               <input type="submit" name="submit" value="Change Password" class="btn-secondary">
             </td>
           </tr>
@@ -46,5 +46,67 @@
       </form>
     </div>
   </div>
+
+  <?php
+    //Check whether the submit button is clicked
+    if(isset($_POST['submit']))
+    {
+      //1.Get the data from the form 
+      $id = $_POST['id'];
+      $current_password = md5($_POST['current_password']);
+      $new_password = md5($_POST['new_password']);
+      $confirm_password = md5($_POST['confirm_password']);
+      //2.Check whether the user with the current ID and password exist or not
+      $sql = "SELECT * FROM tbl_admin WHERE id=$id AND password='$current_password'";
+
+      $res = mysqli_query($conn, $sql);
+      
+      if ($res==true)
+      {
+        $count = mysqli_num_rows($res);
+
+        if($count==1)
+        {
+          //Check whether the new password matches or not
+          if($new_password ==$confirm_password)
+          {
+            $sql2 = "UPDATE  tbl_admin SET
+              password='$new_password'
+              WHERE id=$id
+            ";
+
+            $res2 = mysqli_query($conn, $sql2);
+
+            //Check whether query is executed or not
+            if($res2==true)
+            {
+              $_SESSION['password-changed'] = "<div class='success'>Password changed successfully</div>";
+              header('location:' . HOMEURL . 'admin/manage-admin.php');
+            }
+            else
+            {
+              $_SESSION['password-changed'] = "<div class='error'>Password not changed</div>";
+              header('location:' . HOMEURL . 'admin/manage-admin.php');
+            }
+
+          }
+          else
+          {
+            $_SESSION['password-not-matched'] = "<div class='error'>Password did not match </div>";
+            header('location:' . HOMEURL . 'admin/manage-admin.php');
+          }
+        }
+        else
+        {
+          $_SESSION['user-not-found'] = "<div class='error'>User not found</div>";
+          header('location:' . HOMEURL . 'admin/manage-admin.php');
+        }
+      }
+      //Check whether there is a new password and confirm if there is a match
+
+      //4.Change the password if all the above hold.
+    }
+  
+  ?>
 
 <?php include('./partials/footer.php')?>

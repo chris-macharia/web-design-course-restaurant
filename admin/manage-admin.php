@@ -22,7 +22,21 @@
       echo $_SESSION['update'];
       unset($_SESSION['update']);
     }
-
+    if(isset($_SESSION['user-not-found']))
+    {
+      echo $_SESSION['user-not-found'];
+      unset($_SESSION['user-not-found']);
+    }
+    if(isset($_SESSION['password-not-matched']))
+    {
+      echo $_SESSION['password-not-matched'];
+      unset($_SESSION['password-not-matched']);
+    }
+    if(isset($_SESSION['password-changed']))
+    {
+      echo $_SESSION['password-changed'];
+      unset($_SESSION['password-changed']);
+    }
     ?>
     <br>
 
