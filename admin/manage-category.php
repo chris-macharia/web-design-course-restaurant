@@ -9,7 +9,7 @@
 
     <!-- Button to Add Admin -->
     <button class="btn-primary">
-      <a href="#">Add category</a>
+      <a href="<?php echo HOMEURL ?>admin/add-category.php">Add category</a>
     </button>
     <br /> <br /> <br />
 
