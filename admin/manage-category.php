@@ -7,10 +7,21 @@
 
     <br /> <br /> <br />
 
+    <?php
+    if (isset($_SESSION['add']))
+    {
+      echo $_SESSION['add'];
+      unset($_SESSION['add']);
+    }
+    ?>
+
+    <br /> <br /> <br />
+
     <!-- Button to Add Admin -->
     <button class="btn-primary">
       <a href="<?php echo HOMEURL ?>admin/add-category.php">Add category</a>
     </button>
+
     <br /> <br /> <br />
 
     <!-- Table to diplay  All admins in the D.B -->
