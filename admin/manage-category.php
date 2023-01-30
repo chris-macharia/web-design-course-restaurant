@@ -8,8 +8,7 @@
     <br /> <br /> <br />
 
     <?php
-    if (isset($_SESSION['add']))
-    {
+    if (isset($_SESSION['add'])) {
       echo $_SESSION['add'];
       unset($_SESSION['add']);
     }
@@ -27,25 +26,69 @@
     <!-- Table to diplay  All admins in the D.B -->
     <table class="tbl-full">
       <tr>
-        <th>#</th>
-        <th>Full name</th>
-        <th>Username</th>
+        <th>S.N</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Featured</th>
+        <th>Active</th>
         <th>Actions</th>
       </tr>
 
-      <tr>
-        <td>1.</td>
-        <td>Chris Macharia</td>
-        <td>Chris Macharia</td>
-        <td>
-          <button class="btn-secondary" id="update-admin-btn">
-            <a href="#">Update admin</a>
-          </button>
-          <button class="btn-danger">
-            <a href="#">Delete admin</a>
-          </button>
-        </td>
-      </tr>
+      <?php
+
+      $sql = "SELECT * FROM tbl_category";
+
+      $res = mysqli_query($conn, $sql);
+
+      $count = mysqli_num_rows($res);
+
+      $sn=1;//Create a serial number generator
+
+      if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+          $id = $row['id'];
+          $title = $row['title'];
+          $image_name = $row['image_name'];
+          $featured = $row['featured'];
+          $active = $row['active'];
+
+          ?>
+
+          <tr>
+            <td><?php echo $sn++?>.</td>
+            <td><?php echo $title;?></td>
+            <td><?php echo $image_name;?></td>
+            <td><?php echo $featured;?></td>
+            <td><?php echo $active;?></td>
+            <td>
+              <button class="btn-secondary" id="update-admin-btn">
+                <a href="#">Update category</a>
+              </button>
+              <button class="btn-danger">
+                <a href="#">Delete category</a>
+              </button>
+            </td>
+          </tr>
+  
+        <?php
+
+        }
+
+      } else {
+        //We do not have data in the table - we'll display the message inside the table
+      ?>
+
+        <tr>
+          <td colspan="6">
+            <div class="error">No Category Added. </div>
+          </td>
+        </tr>
+
+      <?php
+      }
+      ?>
+
+
     </table>
   </div>
 </div>
