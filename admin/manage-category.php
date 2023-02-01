@@ -92,7 +92,7 @@
             <td><?php echo $active; ?></td>
             <td>
               <button class="btn-secondary" id="update-admin-btn">
-                <a href="#">Update category</a>
+                <a href="<?php echo HOMEURL?>admin/update-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>">Update category</a>
               </button>
               <button class="btn-danger">
                 <a href="<?php echo HOMEURL ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>">Delete category</a>
