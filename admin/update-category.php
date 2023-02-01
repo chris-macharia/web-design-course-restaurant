@@ -6,6 +6,40 @@
 
     <br><br>
 
+    <?php
+    
+      //Check whether the id is set or not
+      if(isset($_GET['id']))
+      {
+        $id = $_GET['id'];
+
+        $sql = "SELECT * FROM tbl_category WHERE id=$id";
+
+        $res = mysqli_query($conn, $sql);
+        
+        $count = mysqli_num_rows($res);
+
+        if($count==1)
+        {
+          $row = mysqli_fetch_assoc($res);
+          $title = $row['title'];
+          $current_image = $row['image_name'];
+          $featured = $row['featured'];
+          $active = $row['active'];
+        }
+        else
+        {
+          $_SESSION['no-category-found'] = "<div class='error'>Category not found </div>";
+          header('location:'.HOMEURL.'admin/manage-category.php');
+        }
+
+      }
+      else
+      {
+        header('location:'.HOMEURL."admin/manage-category.php");
+      }
+    ?>
+
     <form action="" method="POST" enctype="multipart/form-data">
       <table class="tbl-30">
         <tr>
