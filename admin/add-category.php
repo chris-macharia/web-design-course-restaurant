@@ -98,39 +98,35 @@
 
       // die(); // kills something about print_r: Be sure to check it out
 
-      if(isset($_FILES['image']['name']))
-      {
+      if (isset($_FILES['image']['name'])) {
         //To upload the image, we need the image name, the source path and the destination path
         $image_name = $_FILES['image']['name'];
 
-        //Auto rename the images
-        //1.Get the image extension
-        $ext = end(explode('.', $image_name));
+        //Upload the Image only if image is selected
+        if ($image_name != "") {
+          //Auto rename the images
+          //1.Get the image extension
+          $ext = end(explode('.', $image_name));
 
-        //2.Rename the image
-        $image_name = "Food_category_".rand(000, 999).'.'.$ext;
+          //2.Rename the image
+          $image_name = "Food_category_" . rand(000, 999) . '.' . $ext;
 
-        $source_path = $_FILES['image']['tmp_name'];
-        
-        $destination_path = "../images/category/".$image_name;
+          $source_path = $_FILES['image']['tmp_name'];
 
-        //Upload the image
-        $upload = move_uploaded_file($source_path, $destination_path);
+          $destination_path = "../images/category/" . $image_name;
 
-        //check whether the image is uploaded or not:- if it's  not uploaded, we will stop the process and redirect with error message
-        if($upload==false)
-        {
-          $_SESSION['upload'] = "<div class='error'>FAILED TO UPLOAD IMAGE</div>";
-          header('location:'.HOMEURL.'admin/add-category.php');
-          //stop the process
-          die();
+          //Upload the image
+          $upload = move_uploaded_file($source_path, $destination_path);
+
+          //check whether the image is uploaded or not:- if it's  not uploaded, we will stop the process and redirect with error message
+          if ($upload == false) {
+            $_SESSION['upload'] = "<div class='error'>FAILED TO UPLOAD IMAGE</div>";
+            header('location:' . HOMEURL . 'admin/add-category.php');
+            //stop the process
+            die();
+          }
         }
-        
-
-
-      }
-      else
-      {
+      } else {
         //Don't upload the image and set the image value as blank
         $image_name = "";
       }
