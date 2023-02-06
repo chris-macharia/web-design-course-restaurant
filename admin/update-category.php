@@ -45,14 +45,28 @@
         <tr>
           <td>Title: </td>
           <td>
-            <input type="text" name="title" value="">
+            <input type="text" name="title" value="<?php echo $title; ?>">
           </td>
         </tr>
 
         <tr>
           <td>Current Image: </td>
           <td>
-            Image will be displayed here
+            <?php
+            
+            if($current_image != "")
+            {
+              //Display image
+              ?>
+                <img src="<?php echo HOMEURL?>images/category/<?php echo $current_image; ?>" width="150px">
+              <?php
+            }
+            else
+            {
+              //Display message
+              echo "<div class='error'>Image not added.</div>";
+            }
+            ?>
           </td>
         </tr>
 
@@ -66,8 +80,9 @@
         <tr>
           <td>Featured: </td>
           <td>
-            <input type="radio" name="featured" value="Yes">Yes
-            <input type="radio" name="featured" value="No">No
+            <!-- The php code is used to display checked and unchecked radio buttons -->
+            <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" value="Yes">Yes
+            <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" value="No">No
           </td>
         </tr>
 
@@ -75,8 +90,8 @@
         <tr>
           <td>Active:</td>
           <td>
-            <input type="radio" name="Active" value="Yes">Yes
-            <input type="radio" name="Active" value="No">No
+            <input <?php if($active=="Yes"){ echo "checked"; }?> type="radio" name="Active" value="Yes">Yes
+            <input <?php if($active=="No"){ echo "checked"; }?> type="radio" name="Active" value="No">No
           </td>
         </tr>
 
