@@ -8,9 +8,17 @@
 
     <!-- Button to Add Admin -->
     <button class="btn-primary">
-      <a href="<?php echo HOMEURL?>admin/add-food.php">Add Food</a>
+      <a href="<?php echo HOMEURL ?>admin/add-food.php">Add Food</a>
     </button>
     <br /> <br /> <br />
+
+    <?php
+
+    if (isset($_SESSION['add'])) {
+      echo $_SESSION['add'];
+      unset($_SESSION['add']);
+    }
+    ?>
 
     <!-- Table to diplay  All admins in the D.B -->
     <table class="tbl-full">

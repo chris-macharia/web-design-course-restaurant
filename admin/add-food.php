@@ -157,6 +157,27 @@
       } else {
         $image_name = "";
       }
+
+      //3.Insert the data into the DB.
+      $sql2 = "INSERT INTO tbl_food SET
+        title = '$title',
+        description = '$description',
+        price = $price, /* for int values, we do not need the single quotations around them */
+        image_name = '$image_name',
+        category_id = $category,
+        featured = '$featured',
+        active = '$active'
+      ";
+
+      $res2 = mysqli_query($conn, $sql2);
+
+      if ($res2 == true) {
+        $_SESSION['add'] = "<div class='success'>Food Added Successfully</div>";
+        header('location:' . HOMEURL . 'admin/manage-foods.php');
+      } else {
+        $_SESSION['add'] = "<div class='error'>Failed to add food</div>";
+        header('location:' . HOMEURL . 'admin/manage-foods.php');
+      }
     }
     ?>
   </div>
