@@ -18,6 +18,22 @@
       echo $_SESSION['add'];
       unset($_SESSION['add']);
     }
+
+    if (isset($_SESSION['unauthorized'])) {
+      echo $_SESSION['unauthorized'];
+      unset($_SESSION['unauthorized']);
+    }
+
+    if (isset($_SESSION['upload'])) {
+      echo $_SESSION['upload'];
+      unset($_SESSION['upload']);
+    }
+
+    if (isset($_SESSION['delete'])) {
+      echo $_SESSION['delete'];
+      unset($_SESSION['delete']);
+    }
+
     ?>
 
     <!-- Table to diplay  All admins in the D.B -->
@@ -76,7 +92,7 @@
                 <a href="#">Update Food</a>
               </button>
               <button class="btn-danger">
-                <a href="#">Delete Food</a>
+                <a href="<?php echo HOMEURL; ?>admin/delete-food.php?id=<?php echo $id ?>&image_name=<?php echo $image_name;  ?>">Delete Food</a>
               </button>
             </td>
           </tr>
